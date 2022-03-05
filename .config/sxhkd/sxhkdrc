@@ -1,0 +1,171 @@
+###########################################################################################################################
+#################                          Mod + Letras                                              #######################
+###########################################################################################################################
+
+super+i 
+ geany "$HOME/.config/i3/config"
+super+o
+ openfortigui
+
+super+c
+ copyq show
+
+super+shift+t 
+crow
+
+
+super+d 
+rofi -lines 12 -padding 24 -width 60 -location 0 -show drun -show-icons -sidebar-mode -columns 3 -font "$font2"
+# super+d   dmenu_run
+
+super+Tab
+rofi -lines 12 -padding 24 -width 60 -location 0 -show window -show-icons -sidebar-mode -columns 3 -font "$font2"
+
+super + shift + s
+	pkill -USR1 -x sxhkd
+# rofi -lines 12 -padding 24 -width 60 -location 0 -show ssh -sidebar-mode -columns 3 -font "$font2" -terminal alacritty
+
+
+super+Escape
+ arcolinux-logout
+
+super+n 
+ nm-connection-editor
+
+super+shift+d
+ rofi -lines 12 -padding 24 -width 60 -location 0 -show run -show-icons -sidebar-mode -columns 3 -font "$font2"
+
+# bloqueo de pantalla
+#  super+l   betterlockscreen -l blur -t "Javier Solis"
+super+l   
+  betterlockscreen --lock blur
+
+ctrl+Print   
+  "flameshot full -p $HOME/OneDrive/Imágenes/"
+shift+Print
+  "flameshot screen -p $HOME/OneDrive/Imágenes/"
+Print
+   flameshot gui
+
+### Aplicaciones #####
+
+  super+Return   alacritty;focus
+  super+KP_Enter   alacritty;focus
+  F12   xfce4-terminal --drop-down
+
+
+#   super+w   exo-open --launch webbrowser;focus
+
+##### workspace related
+
+  super+F1   $navegador
+  super+F2   remmina
+  super+F3   evolution
+  super+F4   geany
+  super+F5   remmina -c ~/OneDrive/My\ Backup\ Linux/remmina/evoltis_rdp_kvm-windows_192-168-122-168.remmina
+  super+F6   kotatogram-desktop
+  super+F7   $navegador 'https://tecnovoznoroeste.sharepoint.com/:x:/r/sites/soporteevoltiscasacentral/_layouts/15/WopiFrame.aspx?sourcedoc=%7B7BF94B25-FD4C-45D0-AFFC-5ED514EBB191%7D&file=(CLIENTES)%20Datos%20y%20Accesos%20TVNO%20-%20Editable.xlsx&action=default' ;   $navegador 'https://evoltis.atlassian.net/issues/?filter=10046' ;   $navegador  'https://evoltis.atlassian.net/plugins/servlet/ac/io.tempo.jira/tempo-app#!/my-work/week?type=LIST';   teams;   whatsapp-nativefier-dark ;  openfortigui ;   evolution;  notify-send 'Modo Trabajo'
+#  super+F7   teams;   whatsapp-nativefier-dark ;  notify-send 'Abriendo apps de Mensajeria'
+  super+shift+F7   alacritty -e "killall teams";   alacritty -e "killall whatsapp-nativefier-dark" ;  notify-send 'Cerrando Apps de Mensajeria'
+
+  super+F8   cantata;focus
+  super+F9   gnome-calculator;focus
+  super+F10   teamviewer;focus
+  super+F11   anydesk;focus
+  super+F12   $archivos;focus
+
+  super+y   ytfzf -fDms
+
+
+###########################################################################################################################
+#################                          Mod + shift                                              #######################
+###########################################################################################################################
+
+
+# kill focused window
+#super+shift+q   
+#xkill
+
+
+#xkill
+#   --release super+shift+q   xkill
+
+
+#  super+shift+m    xrandr --output $secondMonitor  --mode 1920x1080 --pos 1680x0 --rotate normal --output $firstMonitor  --primary --mode 1680x1050 --pos 0x0 --rotate normal --output VIRTUAL1 --off; ;  notify-send 'HDMI Principal'
+#  super+shift+p    xrandr --output $secondMonitor  --primary --mode 1920x1080 --pos 0x0 --rotate normal --output $firstMonitor --off --output VIRTUAL1 --off ;  notify-send 'Notebook Principal'
+
+  super+shift+n
+     autorandr -l nb;    i3-msg restart,   i3-msg reload,   i3-msg restart;  notify-send 'Solo Notebook'
+  super+shift+c
+     autorandr -l casa;    i3-msg restart,   i3-msg reload,   i3-msg restart;  notify-send 'Multimonitor Casa'
+  super+shift+e
+     autorandr -l evoltis;    i3-msg restart,   i3-msg reload,   i3-msg restart;  notify-send 'Multimonitor Evoltis'
+
+###########################################################################################################################
+#################                          Mod + shift + Algo o COntrol                                              #######################
+###########################################################################################################################
+
+#System monitor
+  control+shift+Escape
+     alacritty -e bashtop -t Bashtop
+  control+alt+c    
+  alacritty -e calcurse
+
+#pavucontrol
+  control+alt+v   pavucontrol
+
+  control+alt+m   $email; workspace $ws4
+
+  control+alt+n    /opt/appimages/Joplin.AppImage %U ;workspace $ws5
+
+  control+alt+t   crow
+
+  control+alt+o   openfortigui
+
+#####################################################################################################################
+#################                          variety for your wallpapers                              #################
+#####################################################################################################################
+
+
+#Variety keybindings alt = ALT
+# trash wallpaper
+  alt+t   variety -t
+# next wallpaper
+  alt+n   variety -n
+  alt+Right   variety -n
+# previous wallpaper
+  alt+p   variety -p
+  alt+Left   variety -p
+# favorite wallpaper
+  alt+f   variety -f
+# pause wallpaper
+  alt+Up   variety --pause
+# resume wallpaper
+  alt+Down   variety --resume
+
+#####################################################################################################################
+#################                          variety with pywal for your wallpapers                   #################
+#####################################################################################################################
+
+# next wallpaper
+ alt+shift+n   variety -n && wal -i $(cat $HOME/.config/variety/wallpaper/wallpaper.jpg.txt);    ~/.config/qutebrowser/qutebrowser_reload.py;   i3-msg restart;   /home/jsolis/.config/keyboard_rgb.sh &
+# previous wallpaper
+  alt+shift+p   variety -p && wal -i $(cat $HOME/.config/variety/wallpaper/wallpaper.jpg.txt);    ~/.config/qutebrowser/qutebrowser_reload.py;   i3-msg restart;   /home/jsolis/.config/keyboard_rgb.sh & 
+# trash wallpaper
+  alt+shift+t   variety -t && wal -i $(cat $HOME/.config/variety/wallpaper/wallpaper.jpg.txt);   ~/.config/qutebrowser/qutebrowser_reload.py;   i3-msg restart;   /home/jsolis/.config/keyboard_rgb.sh &
+# Update Wallpaper
+  alt+shift+u   wal -i $(cat $HOME/.config/variety/wallpaper/wallpaper.jpg.txt) ;   9~/.config/qutebrowser/qutebrowser_reload.py;   i3-msg restart;   /home/jsolis/.config/keyboard_rgb.sh &
+
+############################################################################################################################
+#################                Teclas de defecto teclado o Notebook                                            ###########
+############################################################################################################################
+
+# Use pactl to adjust volume in PulseAudio.
+  XF86AudioRaiseVolume   pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
+  XF86AudioLowerVolume   pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
+  XF86AudioMute   pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
+  XF86AudioMicMute   pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+
+# Screen brightness controls
+   XF86MonBrightnessUp   "xbacklight -inc 10; notify-send 'brightness up'"
+   XF86MonBrightnessDown   "xbacklight -dec 10; notify-send 'brightness down'"
